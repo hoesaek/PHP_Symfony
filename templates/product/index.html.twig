@@ -1,0 +1,84 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <div class="container mt-4">
+    <h1 class="mb-3">{{ product.name}}</h1>
+        <nav class="mb-5" style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a href="{{ path('app_category', { slug : product.category.slug}) }}" class="text-warning-emphasis">
+                        {{ product.category.name }}
+                    </a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">{{ product.slug }}</li>
+            </ol>
+        </nav>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card mb-3">
+                    <div class="row g-0">
+                        <!-- Image de gauche -->
+                        <div class="col-md-4">
+                            <img src="/uploads/{{ product.illustration }}" 
+                                class="img-fluid rounded-start mx-auto d-block" 
+                                alt="{{ product.name }}">
+                        </div>
+
+                        <!-- Contenu texte à droite -->
+                        <div class="col-md-8 d-flex flex-column">
+                            <div class="card-body flex-grow-1">
+                                <!-- Nom du produit -->
+                                <h3 class="card-title text-center">{{ product.name }}</h3>
+                                <p class="card-title text-center mb-3 fs-6 text">Blabab</h5>
+
+                                
+
+                                <!-- Description -->
+                                <p class="card-text">{{ product.description }}</p>
+                            </div>
+
+                            <!-- Footer de la carte (fixé en bas) -->
+                            <div class="card-footer mt-auto">
+                                <div class="row align-items-center">
+                                    <div class="col-md-3">
+                                        <p class="card-text">
+                                            <span class="fw-bold text-dark fs-2 text-white ms-3">{{ product.pricewt }} €</span>
+                                        </p>
+                                    </div>
+                                    <div class="col-md-4 offset-md-3">
+                                        <a href="#" 
+                                        class="btn btn-success btn-lg rounded-pill text-white text-center" 
+                                        style="font-size: 0.725rem; padding: 0.625rem 1.25rem;" 
+                                        role="button">
+                                            Ajouter au panier
+                                        </a>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <!-- Étoiles et badge -->
+                                        <div class="d-flex gap-1">
+                                            {% for i in 1..5 %}
+                                                <svg class="bi" width="16" height="16" fill="currentColor" 
+                                                    style="color: {{ i <= 4 ? '#FFD700' : '#D3D3D3' }};" 
+                                                    xmlns="http://www.w3.org/2000/svg" 
+                                                    viewBox="0 0 22 20" aria-hidden="true">
+                                                    <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
+                                                </svg>
+                                            {% endfor %}
+                                            <span class="badge rounded-pill text-bg-primary-emphasis ms-3" 
+                                                style="background-color: #cfe8ff; color: #004085; font-size: 0.75rem; padding: 0.25rem 0.5rem; font-weight: 600;">
+                                                4.9
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
