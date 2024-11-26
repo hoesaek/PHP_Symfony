@@ -12,6 +12,18 @@
     </head>
 
     <body>
+        <style>
+            .scrollable {
+                max-height: 750px; 
+                overflow-y: scroll; 
+                padding-right:30px;
+                -ms-overflow-style: none; 
+                scrollbar-width: none; 
+            }
+            .scrollable::-webkit-scrollbar {
+                display: none; 
+            }
+        </style>
         <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
         <symbol id="check2" viewBox="0 0 16 16">
             <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"></path>
@@ -70,13 +82,11 @@
                             <li class="nav-item">
                                 <a class="nav-link active" aria-current="page" href="{{ path('app_home') }}">Accueil</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Link</a>
+                            {% for categorie in allCategories %}
+                                <li class="nav-item">
+                                <a class="nav-link" href="{{ path('app_category', {'slug': categorie.slug}) }}">{{ categorie.name }}</a>
                             </li>
-                            <li class="nav-item me-0">
-                            </li>
-                            <li class="nav-item me-0">
-                            </li>
+                            {% endfor %}
                         </ul>
                         {% if app.user %}
                             <a class="nav-link me-3" href="{{ path('app_account') }}" >
@@ -88,8 +98,15 @@
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
                             </a>
                         {% endif %}
-                        <a class="nav-link" href="#">
-                           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-shopping-cart"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+                        <a class="nav-link me-2" href="{{path('app_cart')}}">
+                           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-shopping-cart"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                            <span class="badge text-bg-success">
+                                {% if allQty != 0 %}
+                                    {{allQty}}
+                                {% else %}
+                                {% endif %}
+                            </span>
+                           </svg>
                         </a>
                     </div>
                 </div>

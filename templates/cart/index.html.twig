@@ -1,0 +1,63 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <div class="container mt-4">
+        <h1 class="mb-3">Mon Panier</h1>
+        <div class="row gap-3">
+            <a href="{{ path('app_cart_remove')}}" class="text-decoration-none mt-2">
+                <span class="badge text-bg-danger">Vider mon panier</span>
+            </a>
+            <div class="col-md-4 scrollable rounded border-top border-bottom">
+                {% for product in cart %}
+                    <div class="row">
+                        <div class="row row-cols-1 row-cols-md-3 g-4">
+                            <div class="col-md-8">
+                                <div class="card w-100">
+                                    <img src="/uploads/{{product.objet.illustration}}" class="card-img-top" alt="{{product.objet.name}}">
+                                    <div class="card-body">
+                                        <h5 class="card-title text-center">{{product.objet.name}}</h5>
+                                    </div>
+                                    <div class="card-footer text-center">
+                                        <span class="text-body-secondary">Prix unitaire: {{product.objet.pricewt|price}}</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="card" style="width: 10rem;">
+                                    <div class="card-header ">
+                                        <p>Prix total: <span class="text-warning-emphasis text-center"></br>{{(product.qty * product.objet.pricewt)|price}}</span><span class="badge text-bg-success ms-3">x{{product.qty}}</span></p>
+                                        <div class="position-relative mb-3">
+                                            
+                                        </div>
+                                    </div>
+                                    <div class="card-footer">
+                                        <div class="row g-0">
+                                            <div class="col-md-4">
+                                                <h5>
+                                                    <a href="{{ path('app_cart_decrease', {'id' : product.objet.id})}}" class="text-decoration-none text-danger"><span class="badge text-bg-danger">-</span></a>
+                                                </h5>
+                                            </div>
+                                            <div class="col-md-3 offset-md-5">
+                                                <h5>
+                                                    <a href="{{ path('app_cart_add', {'id' : product.objet.id})}}" class="text-decoration-none text-primary"><span class="badge text-bg-primary">+</span></a>
+                                                </h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="col-md-6">
+                recape de mon panier (prix, commande, bouton)
+            </div>
+        </div>
+
+    </div>
+    
+
+{% endblock %}
+

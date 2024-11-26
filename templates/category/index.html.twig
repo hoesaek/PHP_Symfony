@@ -17,19 +17,19 @@
         <p>Cette categorie contient {{category.products|length }} produit(s).</p>
         <div class="row">
             {% for product in category.products %}
-                <div class="card col-md-3 border-dark me-3 text-center">
-                    <a href="{{ path('app_product', {'slug': product.slug}) }}">
+                <div class="card col-md-3 border-dark me-3 text-center ">
+                    <a href="{{ path('app_product', {'slug': product.slug}) }}" class="text-decoration-none">
                         <img src="/uploads/{{ product.illustration }}" 
                             class="card-img-top rounded mx-auto d-block" 
                             alt="{{ product.name }}" 
                             style="width: 150px; height: 150px; object-fit: cover;"
                         >
+                        <div class="card-body">
+                            <h5 class="card-title text-warning-emphasis">{{product.name}}</h5>
+                        </div>
                     </a>
-                    <div class="card-body">
-                        <h5 class="card-title text-warning-emphasis">{{product.name}}</h5>
-                    </div>
                     <div class="card-footer">
-                        <small class="text-body-secondary">Prix : {{product.pricewt}} €</small>
+                        <small class="text-body-secondary">Prix : {{product.pricewt|price}}</small>
                     </div>
                 </div>
             {% endfor %}

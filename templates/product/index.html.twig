@@ -43,11 +43,11 @@
                                 <div class="row align-items-center">
                                     <div class="col-md-3">
                                         <p class="card-text">
-                                            <span class="fw-bold text-dark fs-2 text-white ms-3">{{ product.pricewt }} €</span>
+                                            <span class="fw-bold text-dark fs-2 text-white ms-3">{{ product.pricewt|price }}</span>
                                         </p>
                                     </div>
                                     <div class="col-md-4 offset-md-3">
-                                        <a href="#" 
+                                        <a href="{{ path('app_cart_add', {'id' : product.id})}}" 
                                         class="btn btn-success btn-lg rounded-pill text-white text-center" 
                                         style="font-size: 0.725rem; padding: 0.625rem 1.25rem;" 
                                         role="button">

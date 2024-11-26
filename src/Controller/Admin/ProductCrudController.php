@@ -39,6 +39,10 @@ class ProductCrudController extends AbstractCrudController
      */
     public function configureFields(string $pageName): iterable
     {
+        $required = true;
+        if($pageName == 'edit') {
+            $required = false;
+        }
         return [
             // IdField::new('id'),
             TextField::new('name')->setLabel('Pruduit')->setHelp('Nom de votre produit'),  
@@ -50,7 +54,13 @@ class ProductCrudController extends AbstractCrudController
              * setUploadDir() c'est du php et je dois definir le chemin complet de l'endroit où sera upload mes images
              * https://symfony.com/bundles/EasyAdminBundle/current/fields/ImageField.html
              */
-            ImageField::new('illustration')->setLabel('Image')->setHelp('Image du produit en 600x600')->setUploadedFileNamePattern('[year]-[month]-[day]-[contenthash].[extension]')->setBasePath('/uploads')->setUploadDir('/public/uploads'),
+            ImageField::new('illustration')
+            ->setLabel('Image')
+            ->setHelp('Image du produit en 600x600')
+            ->setUploadedFileNamePattern('[year]-[month]-[day]-[contenthash].[extension]')
+            ->setBasePath('/uploads')->setUploadDir('/public/uploads')
+            ->setRequired($required)
+            ,
             NumberField::new('price')->setLabel('Prix H.T')->setHelp('Prix de votre produit hors-taxes sans le sigle euro €.'),
             ChoiceField::new('tva')->setLabel('Taux de TVA')->setChoices([
                 '5.5%' => '5.5',

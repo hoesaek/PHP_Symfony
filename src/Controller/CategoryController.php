@@ -28,6 +28,14 @@ class CategoryController extends AbstractController
     {
         $category = $categoryRepository->findOneBySlug($slug);
 
+        if(!$category){
+            $this->addFlash(
+                'danger',
+                "La categorie que vous essayez de rechercher n'est pas disponible ou n'existe pas"
+            );
+            return $this->redirectToRoute('app_home');
+        }
+
         return $this->render('category/index.html.twig', [
             'category' => $category
         ]);
