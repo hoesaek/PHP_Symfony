@@ -135,6 +135,16 @@ Les routes sont configurées dans les contrôleurs ou dans les fichiers YAML :
         return $this->redirectToRoute('app_cart');
     }
 ```
+```yaml
+   main:
+      form_login:
+         # "app_login" is the name of the route created previously
+         login_path: app_login
+         check_path: app_login
+      logout:
+         path: app_logout
+         lazy: true
+```
 
 ### Utilisation de Twig
 Twig est le moteur de template pour générer des vues dynamiques. 
