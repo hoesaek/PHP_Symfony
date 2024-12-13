@@ -37,9 +37,8 @@ ainsi que des commandes et pratiques à suivre pour contribuer au développement
    composer install
    ```
 3. Configurez le fichier `.env` avec les informations de votre base de données :
-   DATABASE_URL="mysql://idBDD:mdpSession@127.0.0.1:3306/dbname?serverVersion=8.0.32&charset=utf8mb4"
    ```dotenv
-   DATABASE_URL="mysql://php:8c!3h)|a>al6@127.0.0.1:3306/restoretech?serverVersion=8.0.32&charset=utf8mb4"
+   DATABASE_URL="mysql://app:!ChangeMe!@127.0.0.1:3306/app?serverVersion=8.0.32&charset=utf8mb4"
    ```
 5. Créez la base de données et exécutez les migrations :
    ```bash
