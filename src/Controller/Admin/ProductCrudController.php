@@ -45,7 +45,7 @@ class ProductCrudController extends AbstractCrudController
         }
         return [
             // IdField::new('id'),
-            TextField::new('name')->setLabel('Pruduit')->setHelp('Nom de votre produit'),  
+            TextField::new('name')->setLabel('Produit')->setHelp('Nom de votre produit'),  
             SlugField::new('slug')->setLabel('Url')->setTargetFieldName('name')->setHelp('URL de votre categorie'),  
             TextareaField::new('description')->setLabel('Description du produit')->setHelp('Description de votre produit'),
             /**

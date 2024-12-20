@@ -41,10 +41,10 @@ class CartController extends AbstractController
 
         $cart->add($produit);
 
-        $this->addFlash(
-            'success',
-            "Produit correctement ajouté à mon panier"
-        );
+        // $this->addFlash(
+        //     'success',
+        //     "Produit correctement ajouté à mon panier"
+        // );
 
         return $this->redirect($request->headers->get('referer'));
     }
@@ -55,10 +55,10 @@ class CartController extends AbstractController
 
         $cart->decrease($id);
 
-        $this->addFlash(
-            'success',
-            "Produit correctement retiré à mon panier"
-        );
+        // $this->addFlash(
+        //     'success',
+        //     "Produit correctement retiré à mon panier"
+        // );
 
         return $this->redirectToRoute('app_cart');
     }
