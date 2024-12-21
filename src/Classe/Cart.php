@@ -31,7 +31,7 @@ class Cart
     */
     public function add($product){
 
-        //afin de ne pas ecraser le produit precedent dans mon panier :
+        //accède à la session de l'utilisateur pour récupérer les données associées à la clé 'cart'
         $cart = $this->requestStack->getSession()->get('cart');
 
         //ajouter une quantité +1 de mon produit dans le panier
@@ -80,6 +80,30 @@ class Cart
             $totalQty = 0;
         }
         return $totalQty;
+    }
+    /**
+     * Summary of getTotal
+     * 
+     * This method calculates the total cost of items in the cart.
+     * It iterates through each item in the cart, sums up their prices,
+     * and returns the total amount.
+     * 
+     * @return float|int The total cost of items in the cart.
+     *
+     */
+    public function getTotalWt()
+    {
+        $totalPrice = 0;
+
+        if($this->requestStack->getSession()->get('cart')){
+            foreach ($this->requestStack->getSession()->get('cart') as $item) {
+                $totalPrice += $item['objet']->getPricewt() * $item['qty'];
+            }
+
+        }else{
+            $totalPrice = 0;
+        }
+        return $totalPrice;
     }
 
     /**

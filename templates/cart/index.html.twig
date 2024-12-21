@@ -3,13 +3,22 @@
 {% block body %}
 
     <div class="container mt-4">
-        <h1 class="mb-3">Mon Panier</h1>
+        <h1 class="mb-3">Votre panier</h1>
         <div class="row gap-3">
-            <a href="{{ path('app_cart_remove')}}" class="text-decoration-none mt-2"><span class="badge text-bg-danger">Vider mon panier</span></a>
-            <div class="col-md-4 scrollable rounded border-top border-bottom">
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <a href="{{ path('app_cart_remove')}}" class="text-decoration-none mt-2">
+                        <span class="badge text-bg-danger">
+                            Vider mon panier
+                        </span>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="col-md-7 scrollable rounded border-top border-bottom p-3">
                 {% if cart %}
                     {% for product in cart %}
-                        <div class="row">
+                        <div class="row mb-3">
                             <div class="row row-cols-1 row-cols-md-3 g-4">
                                 <div class="col-md-8">
                                     <div class="card w-100">
@@ -22,13 +31,10 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-4 d-flex align-items-center">
                                     <div class="card" style="width: 10rem;">
-                                        <div class="card-header ">
+                                        <div class="card-header">
                                             <p>Prix total: <span class="text-warning-emphasis text-center"></br>{{(product.qty * product.objet.pricewt)|price}}</span><span class="badge text-bg-success ms-3">x{{product.qty}}</span></p>
-                                            <div class="position-relative mb-3">
-                                                
-                                            </div>
                                         </div>
                                         <div class="card-footer">
                                             <div class="row g-0">
@@ -55,8 +61,20 @@
                     </div>
                 {% endif %}
             </div>
-            <div class="col-md-6 rounded border-top border-bottom">
-                recape de mon panier (prix, commande, bouton)
+            <div class="col-md-3 rounded border-top border-bottom d-flex align-items-center">
+                <div class="container my-3 py-2 px-3 rounded" style="background-color: #adb5bd; max-width: 300px; height:auto">
+                    <div class="row">
+                        <span class="col-md-6 text-dark fw-bold">Total produits :</span>
+                        <span class="col-md text-end text-dark">{{allQty}}</span>
+                    </div>
+                    <div class="row mt-2">
+                        <span class="col-md text-dark fw-bold">Sous-total :</span>
+                        <span class="col-md text-end text-dark">{{totalWt|price}}</span>
+                    </div>
+                    <div class="d-flex justify-content-center">
+                        <a href="#" class="btn btn-success mt-3 rounded" style="max-width: 300px; opacity: 0.8;">Commander</a>
+                    </div>
+                </div>
             </div>
         </div>
 
