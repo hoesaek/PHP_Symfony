@@ -62,17 +62,17 @@
                 {% endif %}
             </div>
             <div class="col-md-3 rounded border-top border-bottom d-flex align-items-center">
-                <div class="container my-3 py-2 px-3 rounded" style="background-color: #adb5bd; max-width: 300px; height:auto">
+                <div class="container my-3 py-2 px-3 rounded" style="background-color:rgb(255, 255, 255); max-width: 300px; height:auto">
                     <div class="row">
                         <span class="col-md-6 text-dark fw-bold">Total produits :</span>
-                        <span class="col-md text-end text-dark">{{allQty}}</span>
+                        <span class="col-md text-end text-dark fw-bold">{{allQty}}</span>
                     </div>
                     <div class="row mt-2">
                         <span class="col-md text-dark fw-bold">Sous-total :</span>
-                        <span class="col-md text-end text-dark">{{totalWt|price}}</span>
+                        <span class="col-md text-end text-dark fw-bold">{{totalWt|price}}</span>
                     </div>
                     <div class="d-flex justify-content-center">
-                        <a href="#" class="btn btn-success mt-3 rounded" style="max-width: 300px; opacity: 0.8;">Commander</a>
+                        <a href="#" class="btn btn-warning mt-3 rounded-3" style="width: 300px; opacity: 0.8;">Commander</a>
                     </div>
                 </div>
             </div>
